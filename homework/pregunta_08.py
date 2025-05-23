@@ -31,7 +31,7 @@ def pregunta_08():
 
     """
 
-        agrupado = {}
+    agrupado = {}
     ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
 
     with open(ruta, newline='', encoding='utf-8') as archivo:
