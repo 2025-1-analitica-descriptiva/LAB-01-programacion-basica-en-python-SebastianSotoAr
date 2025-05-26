@@ -18,18 +18,17 @@ def pregunta_03():
 
     """
 
-    suma_por_letra = {}
-    ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
+    sum = {}
+    url = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
 
-    with open(ruta, newline='', encoding='utf-8') as archivo:
-        lector = csv.reader(archivo, delimiter='\t')
-        for fila in lector:
-            letra = fila[0]
-            valor = int(fila[1])
-            if letra in suma_por_letra:
-                suma_por_letra[letra] += valor
+    with open(url, newline='', encoding='utf-8') as file:
+        reader = csv.reader(file, delimiter='\t')
+        for row in reader:
+            letter = row[0]
+            value = int(row[1])
+            if letter in sum:
+                sum[letter] += value
             else:
-                suma_por_letra[letra] = valor
+                sum[letter] = value
 
-    resultado = sorted(suma_por_letra.items())
-    return resultado
+    return sorted(sum.items())

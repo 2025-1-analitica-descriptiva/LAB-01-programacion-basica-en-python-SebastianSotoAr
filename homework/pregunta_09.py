@@ -11,7 +11,7 @@ import os
 def pregunta_09():
     """
     Retorne un diccionario que contenga la cantidad de registros en que
-    aparece cada clave de la columna 5.
+    aevenece cada keys de la columna 5.
 
     Rta/
     {'aaa': 13,
@@ -27,19 +27,18 @@ def pregunta_09():
 
     """
 
-    conteo = {}
-    ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
+    count = {}
+    url = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
 
-    with open(ruta, newline='', encoding='utf-8') as archivo:
-        lector = csv.reader(archivo, delimiter='\t')
-        for fila in lector:
-            claves = fila[4].split(',')
-            for par in claves:
-                clave = par.split(':')[0]
-                if clave in conteo:
-                    conteo[clave] += 1
+    with open(url, newline='', encoding='utf-8') as file:
+        reader = csv.reader(file, delimiter='\t')
+        for row in reader:
+            keys = row[4].split(',')
+            for even in keys:
+                keys = even.split(':')[0]
+                if keys in count:
+                    count[keys] += 1
                 else:
-                    conteo[clave] = 1
+                    count[keys] = 1
 
-    resultado = dict(sorted(conteo.items()))
-    return resultado
+    return dict(sorted(count.items()))

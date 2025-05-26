@@ -18,17 +18,16 @@ def pregunta_02():
 
     """
 
-    conteo = {}
+    count = {}
 
-    ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
-    with open(ruta, newline='', encoding='utf-8') as archivo:
-        lector = csv.reader(archivo, delimiter='\t')  # ajusta a ',' si no son tabulaciones
-        for fila in lector:
-            letra = fila[0]
-            if letra in conteo:
-                conteo[letra] += 1
+    url = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
+    with open(url, newline='', encoding='utf-8') as archivo:
+        reader = csv.reader(archivo, delimiter='\t')
+        for fila in reader:
+            letter = fila[0]
+            if letter in count:
+                count[letter] += 1
             else:
-                conteo[letra] = 1
+                count[letter] = 1
 
-    resultado = sorted(conteo.items())
-    return resultado
+    return sorted(count.items())

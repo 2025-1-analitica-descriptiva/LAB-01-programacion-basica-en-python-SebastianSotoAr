@@ -10,7 +10,7 @@ import os
 
 def pregunta_04():
     """
-    La columna 3 contiene una fecha en formato `YYYY-MM-DD`. Retorne la
+    La columna 3 contiene una date en formato `YYYY-MM-DD`. Retorne la
     cantidad de registros por cada mes, tal como se muestra a continuación.
 
     Rta/
@@ -29,18 +29,17 @@ def pregunta_04():
 
     """
 
-    conteo_meses = {}
-    ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
+    month_couter = {}
+    url = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
 
-    with open(ruta, newline='', encoding='utf-8') as archivo:
-        lector = csv.reader(archivo, delimiter='\t')
-        for fila in lector:
-            fecha = fila[2]
-            mes = fecha.split('-')[1]
-            if mes in conteo_meses:
-                conteo_meses[mes] += 1
+    with open(url, newline='', encoding='utf-8') as file:
+        reader = csv.reader(file, delimiter='\t')
+        for row in reader:
+            date = row[2]
+            month = date.split('-')[1]
+            if month in month_couter:
+                month_couter[month] += 1
             else:
-                conteo_meses[mes] = 1
+                month_couter[month] = 1
 
-    resultado = sorted(conteo_meses.items())
-    return resultado
+    return sorted(month_couter.items())

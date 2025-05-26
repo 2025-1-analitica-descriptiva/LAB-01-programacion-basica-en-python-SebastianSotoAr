@@ -12,7 +12,7 @@ import os
 def pregunta_07():
     """
     Retorne una lista de tuplas que asocien las columnas 0 y 1. Cada tupla
-    contiene un valor posible de la columna 2 y una lista con todas las letras
+    contiene un valor posible de la columna 2 y una lista con todas las letters
     asociadas (columna 1) a dicho valor de la columna 2.
 
     Rta/
@@ -29,18 +29,17 @@ def pregunta_07():
 
     """
 
-    agrupado = {}
-    ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
+    set1 = {}
+    url = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
 
-    with open(ruta, newline='', encoding='utf-8') as archivo:
-        lector = csv.reader(archivo, delimiter='\t')
-        for fila in lector:
-            numero = int(fila[1])
-            letra = fila[0]
-            if numero in agrupado:
-                agrupado[numero].append(letra)
+    with open(url, newline='', encoding='utf-8') as file:
+        reader = csv.reader(file, delimiter='\t')
+        for row in reader:
+            num = int(row[1])
+            letter = row[0]
+            if num in set1:
+                set1[num].append(letter)
             else:
-                agrupado[numero] = [letra]
+                set1[num] = [letter]
 
-    resultado = sorted(agrupado.items())
-    return resultado
+    return sorted(set1.items())

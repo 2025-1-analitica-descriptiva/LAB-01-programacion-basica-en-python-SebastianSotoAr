@@ -19,17 +19,16 @@ def pregunta_05():
     """
 
     min_max = {}
-    ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
+    url = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
 
-    with open(ruta, newline='', encoding='utf-8') as archivo:
-        lector = csv.reader(archivo, delimiter='\t')
-        for fila in lector:
-            letra = fila[0]
-            valor = int(fila[1])
-            if letra in min_max:
-                min_max[letra].append(valor)
+    with open(url, newline='', encoding='utf-8') as file:
+        reader = csv.reader(file, delimiter='\t')
+        for row in reader:
+            letter = row[0]
+            value = int(row[1])
+            if letter in min_max:
+                min_max[letter].append(value)
             else:
-                min_max[letra] = [valor]
+                min_max[letter] = [value]
 
-    resultado = [(letra, max(valores), min(valores)) for letra, valores in sorted(min_max.items())]
-    return resultado
+    return [(letter, max(values), min(values)) for letter, values in sorted(min_max.items())]

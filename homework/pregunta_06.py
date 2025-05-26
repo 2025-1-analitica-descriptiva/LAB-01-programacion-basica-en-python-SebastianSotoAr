@@ -11,9 +11,9 @@ import os
 def pregunta_06():
     """
     La columna 5 codifica un diccionario donde cada cadena de tres letras
-    corresponde a una clave y el valor despues del caracter `:` corresponde al
-    valor asociado a la clave. Por cada clave, obtenga el valor asociado mas
-    pequeño y el valor asociado mas grande computados sobre todo el archivo.
+    corresponde a una key y el value despues del caracter `:` corresponde al
+    value asociado a la key. Por cada clave, obtenga el value asociado mas
+    pequeño y el valor asociado mas grande comurldos sobre todo el file.
 
     Rta/
     [('aaa', 1, 9),
@@ -29,20 +29,19 @@ def pregunta_06():
 
     """
 
-    valores = {}
-    ruta = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
+    values = {}
+    url = os.path.join(os.path.dirname(__file__), '..', 'files', 'input', 'data.csv')
 
-    with open(ruta, newline='', encoding='utf-8') as archivo:
-        lector = csv.reader(archivo, delimiter='\t')
-        for fila in lector:
-            pares = fila[4].split(',')
-            for par in pares:
-                clave, valor = par.split(':')
-                valor = int(valor)
-                if clave in valores:
-                    valores[clave].append(valor)
+    with open(url, newline='', encoding='utf-8') as file:
+        reader = csv.reader(file, delimiter='\t')
+        for row in reader:
+            even = row[4].split(',')
+            for num in even:
+                key, value = num.split(':')
+                value = int(value)
+                if key in values:
+                    values[key].append(value)
                 else:
-                    valores[clave] = [valor]
+                    values[key] = [value]
 
-    resultado = [(clave, min(v), max(v)) for clave, v in sorted(valores.items())]
-    return resultado
+    return [(key, min(v), max(v)) for key, v in sorted(values.items())]
